@@ -18,8 +18,11 @@ const ioServer = new Server(httpServer, { path: '/real-time' });
 
 app.use('/controller', express.static('public-controller'));
 app.use('/display', express.static('public-display'));
-app.use(express.json());
+app.use(express.json()); 
 
+app.get('/', (req, res) => {
+    res.send('Hay respuesta del servidor')
+  })
 
 /*___________________________________________
 
@@ -32,7 +35,16 @@ _____________________________________________ */
 It should listen for directions and emit the incoming data.
 _____________________________________________ */
 
-ioServer.on('connection', (socket) => {
+app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`)
+  });
+
+// escuchar eventos
+ioServer.on('directions', movementButton => {
+
+    socket.broadcast.emit('directions ', movementButton => {
+
+    })
 
 
 });
@@ -41,3 +53,21 @@ ioServer.on('connection', (socket) => {
 
 3) Create an endpoint to POST user score and print it
 _____________________________________________ */
+let userScore = {
+    name: "juan" ,
+    score: 30
+}
+
+async function sendScore (){
+    const httpRequest = {
+        method : "POST", 
+        headers: {'Content-type: ': 'html' } ,
+        
+        body: {
+            userScore
+        }
+    }
+
+    await fetch (URL);
+
+}
