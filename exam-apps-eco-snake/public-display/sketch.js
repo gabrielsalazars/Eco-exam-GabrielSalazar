@@ -39,7 +39,60 @@ function putMouseRandomPosition() {
     whiteMouse.y = random(50, windowHeight - 50);
 }
 
+// switch para cambiar la posicion
+io.on(socket, () => {
+switch (key) {
+    case 1:
+        "UP"
+        character.y++
+        break;
+        case 1:
+            "DOWN"
+            character.y--
+            
+            break;
+            case 1:
+                "RIGTH"
+                character.x++
 
+                break;
+
+                case 1:
+                    "LEFT"
+                    character.x--
+                    
+                    break;
+    default:
+        break;
+}
+
+})
+
+// enviar puntaje
+let mouseEaten = {
+    score: 30
+}
+
+async function sendScore (){
+
+    const httpRequest = {
+        method : "POST", 
+        headers: {'Content-type: ': 'html' }, 
+
+        body: {
+            data : mouseEaten.score, 
+
+        }
+
+    }
+
+    await fetch (URL);
+
+}
+
+socket.on('movementButton ', movementButton => {
+
+})
 /*___________________________________________
 
 1) Include the socket method to listen to events and change the character position.
@@ -51,4 +104,3 @@ _____________________________________________ */
 
 2) Include the fetch method to post each time the snake eats a mouse
 _____________________________________________ */
-
