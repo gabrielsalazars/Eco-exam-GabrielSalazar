@@ -24,6 +24,6 @@ function draw() {
 1) Create a function that includes the socket method to emit the directions
 _____________________________________________ */
 
-socket.broadcast.emit('directions ', movementButton => {
-
-})
+io.on("directions", (socket) => {
+  socket.emit("directions", movementButton);
+});
